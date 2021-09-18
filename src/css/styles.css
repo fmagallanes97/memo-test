@@ -1,0 +1,55 @@
+.perspective {
+  -webkit-perspective: 1800px;
+  perspective: 1800px;
+}
+  
+.memo-block {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+  
+.memo-block.flip{
+  -webkit-transform:rotateY(-180deg);
+  transform:rotateY(-180deg);
+}
+  
+.memo-front, .memo-back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: rotateX(0deg); 
+}
+  
+.memo-back {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+
+img {
+  pointer-events: none;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+
+@layer components {
+  .memo-block {
+    @apply relative w-36 h-60 flex duration-700;
+  }
+
+  .memo {
+    @apply absolute h-full w-full bg-white bg-opacity-20 rounded-lg flex flex-col items-center justify-center;
+  }
+
+  .memo-front {
+    @apply shadow z-10;
+  }
+
+  .memo-back {
+    @apply shadow-md z-0;
+  }
+
+  .btn {
+    @apply bg-gray-800 py-3 px-7 rounded-lg text-gray-100 text-base font-medium transform ease-linear duration-150 hover:scale-110 disabled:pointer-events-none disabled:opacity-70;
+  }
+}

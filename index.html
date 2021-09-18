@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>memotest</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="./src/css/styles.css" rel="stylesheet"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&display=swap" rel="stylesheet">
+
+    <script defer type="module" src="./src/js/stopWatch.js"></script>
+    <script defer type="module" src="./src/js/characters.js"></script>
+    <script defer type="module" src="./src/js/memo.js"></script>
+</head>
+<body class="bg-gray-100 h-screen flex flex-col justify-center items-center select-none font-rubik font-bold">
+    <div class="flex flex-row justify-between w-1/2 items-end mb-5 text-xl text-gray-800" id="dashboard">
+        <div>
+            <img src="./src/svg/logos/memo-logo.svg" alt="memo test logo">
+        </div>
+        <div class="flex flex-row">
+            <div class="flex flex-row w-64 justify-between leading-none">
+                <div>TIME: <span id="stopWatch" class="font-medium">00:00</span></div>
+                <div>MOVES: <span class="font-medium" id="moves">0</span></div>
+            </div>
+        </div>
+        <button class="btn" id="btn-play">
+            Play
+        </button>
+    </div>
+    <div class="grid grid-cols-6 gap-5 perspective w-1/2" id="memo-block-container">
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+        <button class="memo-block">
+            <div class="memo memo-front"><img src="./src/svg/logos/fontside.svg" alt=""></div>
+            <div class="memo memo-back"></div>
+        </button>
+    </div>
+    <div class="absolute bottom-0 mb-2 cursor-pointer transform duration-200 hover:scale-110 hover:-translate-y-1">
+        <a href="https://github.com/facums" target="_blank">
+            <img id="github" src="./src/svg/logos/github.svg" alt="github logo">
+        </a>
+    </div>
+</body>
+</html>
