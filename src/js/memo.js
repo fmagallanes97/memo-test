@@ -5,6 +5,7 @@ const $memosContainer = document.querySelector('#memo-block-container');
 const $dashboard = document.querySelector('#dashboard');
 const $play = document.querySelector('#btn-play');
 const $memosBlock = $memosContainer.querySelectorAll('.memo-block');
+
 export const $stopWatch = $dashboard.querySelector('#stopWatch');
 
 const DECK = [...CHARS, ...CHARS];
