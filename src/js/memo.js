@@ -1,22 +1,18 @@
 import * as stopWatch from './stopWatch';
-import { CHARS } from './characters';
+import { CHARACTERS } from './characters';
 
-const $memosContainer = document.querySelector('#memo-block-container');
+const $memoBoard = document.querySelector('#memo-block-board');
 const $dashboard = document.querySelector('#dashboard');
 const $play = document.querySelector('#btn-play');
-const $memosBlock = $memosContainer.querySelectorAll('.memo-block');
+const $memosBlock = $memoBoard.querySelectorAll('.memo-block');
 
 export const $stopWatch = $dashboard.querySelector('#stopWatch');
 
-const DECK = [...CHARS, ...CHARS];
+const DECK = [...CHARACTERS, ...CHARACTERS];
 const memo = {selected: null, current: null};
 
-function getBackface(memoBlock){
-    return memoBlock.querySelector('.memo-back');
-}
-
 function getMemosChecked(){
-    const checked = $memosContainer.querySelectorAll('.flip').length;
+    const checked = $memoBoard.querySelectorAll('.flip').length;
     return checked;
 }
 
@@ -38,26 +34,27 @@ function unflip(memoBlock){
     memoBlock.classList.remove('flip');
 }
 
-function enableMemo(){
-    $memosContainer.addEventListener('click', memoHandler);
+function enableBoard(){
+    $memoBoard.addEventListener('click', memoHandler);
 }
 
-function disableMemo(){
-    $memosContainer.removeEventListener('click', memoHandler);
+function disableBoard(){
+    $memoBoard.removeEventListener('click', memoHandler);
 }
 
-function loadChars(deckShuffled){
-    const $backfaces = $memosContainer.querySelectorAll('.memo-back');
+function loadCharacters(characters){
+    const $memoBlocks = $memoBoard.querySelectorAll('.memo-block');
 
-    $backfaces.forEach(($back, i) => {
+    $memoBlocks.forEach(($memoBlock, i) => {
+        const $backface = $memoBlock.querySelector('.memo-back');
         const $img = document.createElement('img');
 
-        $img.src = deckShuffled[i];
+        $img.src = characters[i].dir;
+        $backface.innerHTML = '';
+        $backface.appendChild($img);
 
-        $back.innerHTML = '';
-        $back.setAttribute('data-char', deckShuffled[i]);
-        $back.appendChild($img);
-    })
+        $memoBlock.setAttribute('data-char', characters[i].name);
+    });
 }
 
 function memoHandler(e){
@@ -100,7 +97,7 @@ function resetAssigment(){
 }
 
 function reset(){
-    disableMemo();
+    disableBoard();
     resetAssigment();
     resetMoves();
     stopWatch.reset();
@@ -149,17 +146,17 @@ function checkPlay(memo){
     if(!hasTwoMemos) return;
 
     addMove();
-    disableMemo();
+    disableBoard();
 
     const isWin = $memosBlock.length === getMemosChecked();
-    const isEqual = getBackface(memo.current).dataset.char === getBackface(memo.selected).dataset.char;
+    const isEqual = memo.current.dataset.char === memo.selected.dataset.char;
 
     if(isWin){
         stopWatch.pause();
     }
     else if(isEqual){
         setTimeout(() => {
-            enableMemo();
+            enableBoard();
         }, 800);
     }
     else{
@@ -169,7 +166,7 @@ function checkPlay(memo){
         setTimeout(() => {
             unflip(selected);
             unflip(current);
-            enableMemo();
+            enableBoard();
         }, 800);
     }
 
@@ -177,17 +174,17 @@ function checkPlay(memo){
 }
 
 function play(){
-    const deckShuffled = shuffle(DECK);
+    const shuffled = shuffle(DECK);
 
     $play.disabled = true;
 
     reset();
-    loadChars(deckShuffled);
+    loadCharacters(shuffled);
     showMemos();
 
     setTimeout(() => {
         $play.disabled = null;
-        enableMemo();
+        enableBoard();
         stopWatch.start();
     }, 2500);
 }

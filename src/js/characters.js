@@ -8,4 +8,14 @@ import ned from '../svg/Ned.svg';
 import tony from '../svg/Tony.svg';
 import otto from '../svg/Otto.svg';
 
-export const CHARS = [grandpa, bart, burns, homer, lisa, moe, ned, tony, otto];
+export const CHARACTERS = [
+    {name: 'Grandpa', dir: grandpa},
+    {name: 'Bart', dir: bart}, 
+    {name: 'Burns', dir: burns},
+    {name: 'Homer', dir: homer},
+    {name: 'Lisa', dir: lisa},
+    {name: 'Moe', dir: moe},
+    {name: 'Ned', dir: ned},
+    {name: 'Tony', dir: tony},
+    {name: 'Otto', dir: otto}
+];
