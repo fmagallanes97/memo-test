@@ -33,40 +33,42 @@ context('Memotest', () => {
         });
 
         cy.wrap(characters).should('not.deep.equal', newCharacters);
-        cy.visit(URL);
     });
 
     describe('solve the game', () => {
         let pairsMap, pairsList;
-
+        
         it('choose a wrong combination', () => {
+            cy.clock();
             cy.visit(URL);
             cy.get('#btn-play').click();
 
-            cy.get('.memo-block').then(memos => {
+            cy.get('.memo-block').then(function(memos){
                 pairsMap = getPairs(memos);
                 pairsList = Object.values(pairsMap);
 
-                setTimeout(() => {
-                    pairsList[0][0].click();
-                    pairsList[1][0].click();
-                }, 2600);
+                this.clock.tick(2600);
 
-                cy.wait(3000);
-                cy.get('#memo-block-board').find('.memo-block').should('not.have.class', 'flip');
+                pairsList[0][0].click();
+                pairsList[1][0].click();
+
+                this.clock.tick(800);
+
+                cy.get('#memo-block-board').find('.flip').should('have.length', 0);
             });
         });
 
         it('solve the game', () => {
-            pairsList.forEach((pair, i) => {
-                setTimeout(() => {
-                    pair[0].click();
-                    pair[1].click();
-                }, 810 * i);
+            cy.clock();
+
+            pairsList.forEach(pair => {
+                cy.tick(800);
+                cy.get(pair[0]).click();
+                cy.get(pair[1]).click();
             });
 
-            cy.wait(810 * pairsList.length);
-            cy.get('#memo-block-board').find('.memo-block').should('have.class', 'flip');
+            cy.get('#memo-block-board').find('.flip').should('have.length', MEMOBLOCKS_NUMBER);
+            cy.get('#dashboard').find('#moves').should('have.text', (pairsList.length + 1).toString());
         });
 
     });
